@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Administración · XV Eydi</title><meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#e9d6a0;--gold2:#b8943c;--cream:#f4ead0;--pill:rgba(38,52,26,.62);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;background:#2d4a1c;overflow-x:hidden;text-align:center}
+#bg{position:fixed;inset:0;z-index:0;background:
+radial-gradient(ellipse 70% 40% at 50% 8%,rgba(20,45,15,.9),transparent 70%),
+radial-gradient(ellipse 40% 30% at 5% 20%,rgba(15,40,12,.85),transparent 70%),
+radial-gradient(ellipse 40% 30% at 95% 25%,rgba(15,40,12,.85),transparent 70%),
+radial-gradient(ellipse 60% 25% at 50% 52%,rgba(214,200,110,.35),transparent 70%),
+linear-gradient(180deg,#2c4a1d 0%,#55692b 40%,#6c7a33 58%,#445a26 78%,#233916 100%)}
+#bg svg{position:absolute;bottom:0;left:0;width:100%;height:30%}
+.bob{animation:bob 6s ease-in-out infinite}@keyframes bob{50%{transform:translateY(6px)}}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:6;overflow:hidden}
+.pet{position:absolute;top:-30px;border-radius:80% 0 80% 0;opacity:.8;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(var(--dx),112vh) rotate(var(--r))}}
+.ff{position:absolute;width:5px;height:5px;border-radius:50%;background:#fff6b0;box-shadow:0 0 10px 4px rgba(240,230,120,.8);animation:glow 3.5s ease-in-out infinite,drift 10s ease-in-out infinite}
+@keyframes glow{50%{opacity:.1}}@keyframes drift{50%{transform:translate(26px,-36px)}}
+#gate{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(ellipse at 50% 40%,#4e6a2a,#1b3012);transition:opacity 1.4s,visibility 1.4s}
+#gate.off{opacity:0;visibility:hidden}
+.seal{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#4f8a54,#1f4a2a);border:4px solid var(--gold2);display:flex;align-items:center;justify-content:center;font-size:3rem;cursor:pointer;box-shadow:0 0 40px rgba(233,214,160,.5);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{box-shadow:0 0 70px rgba(233,214,160,.9);transform:scale(1.06)}}
+main{position:relative;z-index:2;max-width:640px;margin:0 auto}
+section{padding:54px 22px;position:relative}
+.script{font-family:'Great Vibes',cursive,serif;color:var(--gold);line-height:1.05;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.pill{display:inline-block;background:var(--pill);padding:.3em 1em;border-radius:6px;font-family:'Playfair Display',Georgia,serif;letter-spacing:.14em;text-transform:uppercase;font-size:.95rem;margin:6px 0}
+.cta{display:inline-block;background:linear-gradient(180deg,#f0e0b8,#dcc58f);color:#4a4a28;text-decoration:underline;font-family:'Playfair Display',serif;letter-spacing:.12em;text-transform:uppercase;border:0;border-radius:40px;padding:15px 44px;font-size:1.05rem;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35);transition:transform .3s}
+.cta:hover{transform:translateY(-3px) scale(1.03)}
+.reveal{opacity:0;transform:translateY(46px);transition:opacity 1.2s ease,transform 1.2s ease}.reveal.in{opacity:1;transform:none}
+h2.script{font-size:3.6rem;margin:6px 0 14px}
+.hero{padding-top:26px}
+#frameWrap{width:min(86%,340px);margin:0 auto;position:relative;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 14px 24px rgba(0,0,0,.45))}
+@keyframes float{50%{transform:translateY(-8px)}}
+.frogbox{position:absolute;left:50%;bottom:1%;transform:translateX(-50%);font-size:2.6rem;animation:hop 3s ease-in-out infinite;filter:drop-shadow(0 0 8px #e9d6a0)}
+@keyframes hop{0%,60%,100%{transform:translateX(-50%)}70%{transform:translateX(-50%) translateY(-18px)}}
+.quince{font-size:clamp(3.6rem,19vw,6rem)}
+.name{font-size:clamp(3rem,15vw,5rem)}
+.date{display:flex;align-items:center;justify-content:center;gap:14px;margin:16px 0}
+.date .l{flex:1;border-top:2px solid var(--gold);max-width:110px;padding-top:6px;font-family:'Playfair Display',serif;letter-spacing:.14em;font-size:.9rem}
+.date big{font-family:'Playfair Display',serif;font-size:3rem;color:var(--gold);line-height:1}
+.count{display:flex;justify-content:center;gap:8px;font-family:'Playfair Display',serif}
+.count div{min-width:70px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+.count span{display:block;font-size:2.7rem;color:var(--gold);font-weight:400;letter-spacing:0}
+.tl{position:relative;text-align:left;margin:22px auto 0;max-width:420px;padding-left:96px}
+.tl::before{content:"";position:absolute;left:78px;top:6px;bottom:6px;border-left:1px solid rgba(233,214,160,.6)}
+.ev{position:relative;margin-bottom:34px}
+.ev::before{content:"";position:absolute;left:-23px;top:10px;width:14px;height:14px;border-radius:50%;background:var(--gold)}
+.ev .ic{position:absolute;left:-98px;top:-4px;width:56px;font-size:2.6rem;text-align:center}
+.ev b{display:block;font-family:'Playfair Display',serif;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:1.25rem}
+.ev a{color:var(--cream);font-family:'Playfair Display',serif;letter-spacing:.08em;font-size:.95rem;text-transform:uppercase}
+.fam{display:grid;gap:18px;margin-top:20px}
+.fam div b{display:block;font-family:'Playfair Display',serif;letter-spacing:.2em;font-size:.9rem;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.orn{color:var(--gold);letter-spacing:.8rem;font-size:1.2rem}
+.env{width:170px;margin:0 auto;cursor:pointer;animation:float 4s ease-in-out infinite}
+.letter{max-height:0;overflow:hidden;opacity:0;transition:max-height 2s ease,opacity 1.4s;background:linear-gradient(180deg,#f6ecd0,#ead9ae);color:#3c3a1c;border-radius:6px;text-align:left;line-height:1.55;box-shadow:0 10px 30px rgba(0,0,0,.4);padding:0 24px;font-size:1.25rem}
+.letter.open{max-height:1100px;opacity:1;padding:24px;margin-top:20px}
+.letter .script{color:#6b5a1c;text-shadow:none;font-size:2.2rem}
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:10px}
+.pol{background:linear-gradient(160deg,#f7efd8,#e8d6a8);padding:10px 10px 22px;border-radius:4px;box-shadow:0 8px 20px rgba(0,0,0,.45);transform:rotate(var(--a,-3deg));transition:transform .4s;cursor:zoom-in;position:relative}
+.pol:nth-child(even){--a:3deg}.pol:hover{transform:rotate(0) scale(1.06);z-index:2}
+.pol img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border:1px solid #c9b27a}
+.pol button{position:absolute;top:-8px;right:-8px}
+input,.sel{width:100%;max-width:340px;padding:13px 16px;margin:7px auto;border-radius:30px;border:1px solid var(--gold2);background:rgba(30,45,20,.6);color:var(--cream);font:inherit;text-align:center;display:block}
+input::placeholder{color:rgba(244,234,208,.6)}
+table{width:100%;border-collapse:collapse;font-size:1rem}th,td{padding:8px;border-bottom:1px solid rgba(233,214,160,.3)}
+.wrap{overflow-x:auto}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:40;display:none;align-items:center;justify-content:center}#lb img{max-width:92%;max-height:90%;border:8px solid #f1e4bd}
+.hide{display:none!important}.msg{min-height:1.4em;color:#b8f0b0}
+.panel{background:var(--pill);border:1px solid var(--gold2);border-radius:14px;padding:20px;margin:16px 0}
+</style>
+</head>
+<body><div id="bg"></div>
+<main><section>
+<h2 class="script">Administración</h2>
+<div id="login"><input id="pw" type="password" placeholder="Contraseña de administrador"><p><button class="cta" id="go">Entrar</button></p></div>
+<p class="msg" id="amsg"></p>
+<div id="adminBody" class="hide" style="text-align:left">
+<div class="panel"><b>Foto principal (dentro del marco)</b><br><input type="file" id="mainf" accept="image/*"><p style="text-align:center"><button class="cta" style="padding:10px 26px" id="mainb">Guardar foto principal</button></p></div>
+<div class="panel"><b>Galería</b><br><input type="file" id="files" accept="image/*" multiple><p style="text-align:center"><button class="cta" style="padding:10px 26px" id="upl">Subir fotos</button></p><div class="gal" id="agal"></div></div>
+<div class="panel"><b>Confirmaciones</b><p id="tot"></p><p style="text-align:center"><button class="cta" style="padding:10px 26px" id="exp">Exportar lista (CSV)</button></p>
+<div class="wrap"><table><thead><tr><th>Familia</th><th>Personas</th><th>Fecha</th></tr></thead><tbody id="rows"></tbody></table></div></div>
+</div>
+<p><a class="cta" style="padding:10px 26px" href="/">Ver invitación</a></p>
+</section></main>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let PW='',rsvps=[];
+const H=()=>({'x-admin':PW});
+async function gal(){const d=await (await fetch('/api/fotos')).json();
+$('agal').innerHTML=(d.fotos||[]).map(p=>`<div class="pol"><img src="${esc(p.url)}" alt="Foto"><button class="cta" style="padding:4px 12px;font-size:.8rem" data-del="${esc(p.id)}">Quitar</button></div>`).join('')}
+async function rs(){const r=await fetch('/api/rsvps',{headers:H()});if(!r.ok)return false;rsvps=(await r.json()).rsvps||[];
+const t=rsvps.reduce((a,x)=>a+(+x.personas||0),0);$('tot').textContent=`${rsvps.length} familias · ${t} personas confirmadas`;
+$('rows').innerHTML=rsvps.map(x=>`<tr><td>${esc(x.familia)}</td><td>${esc(x.personas)}</td><td>${esc((x.fecha||'').slice(0,10))}</td></tr>`).join('');return true}
+$('go').onclick=async()=>{PW=$('pw').value;$('amsg').textContent='Verificando…';
+try{if(await rs()){$('login').classList.add('hide');$('adminBody').classList.remove('hide');$('amsg').textContent='';gal()}else $('amsg').textContent='Contraseña incorrecta.'}catch(e){$('amsg').textContent='Error de conexión.'}};
+function shrink(f){return new Promise((ok,no)=>{const i=new Image();i.onload=()=>{const m=1600,s=Math.min(1,m/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=i.width*s;c.height=i.height*s;c.getContext('2d').drawImage(i,0,0,c.width,c.height);c.toBlob(b=>b?ok(b):no(),'image/jpeg',.85)};i.onerror=no;i.src=URL.createObjectURL(f)})}
+async function up(f,tipo){const b=await shrink(f);const r=await fetch('/api/foto?tipo='+tipo,{method:'POST',headers:H(),body:b});if(!r.ok)throw new Error('Error '+r.status)}
+$('upl').onclick=async()=>{const fs=[...$('files').files];if(!fs.length)return;$('amsg').textContent='Subiendo…';
+try{for(const f of fs)await up(f,'galeria');$('files').value='';$('amsg').textContent='¡Fotos agregadas!';gal()}catch(e){$('amsg').textContent=e.message}};
+$('mainb').onclick=async()=>{const f=$('mainf').files[0];if(!f)return;$('amsg').textContent='Subiendo…';
+try{await up(f,'principal');$('amsg').textContent='¡Foto principal guardada!'}catch(e){$('amsg').textContent=e.message}};
+document.addEventListener('click',async e=>{const id=e.target.dataset&&e.target.dataset.del;if(id&&confirm('¿Quitar esta foto?')){await fetch('/api/foto?k='+encodeURIComponent(id),{method:'DELETE',headers:H()});gal()}});
+$('exp').onclick=()=>{const q=v=>'"'+String(v).replace(/"/g,'""')+'"';
+const csv='\ufeffFamilia,Personas,Fecha\n'+rsvps.map(r=>[q(r.familia),r.personas,q((r.fecha||'').slice(0,10))].join(',')).join('\n');
+const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='confirmaciones-xv-eydi.csv';a.click()};
+</script></body></html>

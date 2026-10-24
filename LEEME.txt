@@ -1,0 +1,6 @@
+INVITACION EYDI - PASOS PARA NETLIFY
+1) Sube esta carpeta a un repositorio de GitHub (o usa Netlify CLI: netlify deploy --prod).
+2) En Netlify: Add new site > Import from Git > elige el repositorio. No cambies nada, netlify.toml ya lo configura.
+3) Site configuration > Environment variables > agrega ADMIN_PASSWORD con la contraseña que quieras.
+4) Vuelve a desplegar (Deploys > Trigger deploy).
+5) Invitados: tusitio.netlify.app   |   Administrador: tusitio.netlify.app/admin.html

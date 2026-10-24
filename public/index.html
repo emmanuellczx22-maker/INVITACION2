@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>XV Años · Eydi Alejandra</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#e9d6a0;--gold2:#b8943c;--cream:#f4ead0;--pill:rgba(38,52,26,.62);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;background:#2d4a1c;overflow-x:hidden;text-align:center}
+#bg{position:fixed;inset:0;z-index:0;background:
+radial-gradient(ellipse 70% 40% at 50% 8%,rgba(20,45,15,.9),transparent 70%),
+radial-gradient(ellipse 40% 30% at 5% 20%,rgba(15,40,12,.85),transparent 70%),
+radial-gradient(ellipse 40% 30% at 95% 25%,rgba(15,40,12,.85),transparent 70%),
+radial-gradient(ellipse 60% 25% at 50% 52%,rgba(214,200,110,.35),transparent 70%),
+linear-gradient(180deg,#2c4a1d 0%,#55692b 40%,#6c7a33 58%,#445a26 78%,#233916 100%)}
+#bg svg{position:absolute;bottom:0;left:0;width:100%;height:30%}
+.bob{animation:bob 6s ease-in-out infinite}@keyframes bob{50%{transform:translateY(6px)}}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:6;overflow:hidden}
+.pet{position:absolute;top:-30px;border-radius:80% 0 80% 0;opacity:.8;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(var(--dx),112vh) rotate(var(--r))}}
+.ff{position:absolute;width:5px;height:5px;border-radius:50%;background:#fff6b0;box-shadow:0 0 10px 4px rgba(240,230,120,.8);animation:glow 3.5s ease-in-out infinite,drift 10s ease-in-out infinite}
+@keyframes glow{50%{opacity:.1}}@keyframes drift{50%{transform:translate(26px,-36px)}}
+#gate{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(ellipse at 50% 40%,#4e6a2a,#1b3012);transition:opacity 1.4s,visibility 1.4s}
+#gate.off{opacity:0;visibility:hidden}
+.seal{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#4f8a54,#1f4a2a);border:4px solid var(--gold2);display:flex;align-items:center;justify-content:center;font-size:3rem;cursor:pointer;box-shadow:0 0 40px rgba(233,214,160,.5);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{box-shadow:0 0 70px rgba(233,214,160,.9);transform:scale(1.06)}}
+main{position:relative;z-index:2;max-width:640px;margin:0 auto}
+section{padding:54px 22px;position:relative}
+.script{font-family:'Great Vibes',cursive,serif;color:var(--gold);line-height:1.05;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.pill{display:inline-block;background:var(--pill);padding:.3em 1em;border-radius:6px;font-family:'Playfair Display',Georgia,serif;letter-spacing:.14em;text-transform:uppercase;font-size:.95rem;margin:6px 0}
+.cta{display:inline-block;background:linear-gradient(180deg,#f0e0b8,#dcc58f);color:#4a4a28;text-decoration:underline;font-family:'Playfair Display',serif;letter-spacing:.12em;text-transform:uppercase;border:0;border-radius:40px;padding:15px 44px;font-size:1.05rem;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35);transition:transform .3s}
+.cta:hover{transform:translateY(-3px) scale(1.03)}
+.reveal{opacity:0;transform:translateY(46px);transition:opacity 1.2s ease,transform 1.2s ease}.reveal.in{opacity:1;transform:none}
+h2.script{font-size:3.6rem;margin:6px 0 14px}
+.hero{padding-top:26px}
+#frameWrap{width:min(86%,340px);margin:0 auto;position:relative;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 14px 24px rgba(0,0,0,.45))}
+@keyframes float{50%{transform:translateY(-8px)}}
+.frogbox{position:absolute;left:50%;bottom:1%;transform:translateX(-50%);font-size:2.6rem;animation:hop 3s ease-in-out infinite;filter:drop-shadow(0 0 8px #e9d6a0)}
+@keyframes hop{0%,60%,100%{transform:translateX(-50%)}70%{transform:translateX(-50%) translateY(-18px)}}
+.quince{font-size:clamp(3.6rem,19vw,6rem)}
+.name{font-size:clamp(3rem,15vw,5rem)}
+.date{display:flex;align-items:center;justify-content:center;gap:14px;margin:16px 0}
+.date .l{flex:1;border-top:2px solid var(--gold);max-width:110px;padding-top:6px;font-family:'Playfair Display',serif;letter-spacing:.14em;font-size:.9rem}
+.date big{font-family:'Playfair Display',serif;font-size:3rem;color:var(--gold);line-height:1}
+.count{display:flex;justify-content:center;gap:8px;font-family:'Playfair Display',serif}
+.count div{min-width:70px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+.count span{display:block;font-size:2.7rem;color:var(--gold);font-weight:400;letter-spacing:0}
+.tl{position:relative;text-align:left;margin:22px auto 0;max-width:420px;padding-left:96px}
+.tl::before{content:"";position:absolute;left:78px;top:6px;bottom:6px;border-left:1px solid rgba(233,214,160,.6)}
+.ev{position:relative;margin-bottom:34px}
+.ev::before{content:"";position:absolute;left:-23px;top:10px;width:14px;height:14px;border-radius:50%;background:var(--gold)}
+.ev .ic{position:absolute;left:-98px;top:-4px;width:56px;font-size:2.6rem;text-align:center}
+.ev b{display:block;font-family:'Playfair Display',serif;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:1.25rem}
+.ev a{color:var(--cream);font-family:'Playfair Display',serif;letter-spacing:.08em;font-size:.95rem;text-transform:uppercase}
+.fam{display:grid;gap:18px;margin-top:20px}
+.fam div b{display:block;font-family:'Playfair Display',serif;letter-spacing:.2em;font-size:.9rem;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.orn{color:var(--gold);letter-spacing:.8rem;font-size:1.2rem}
+.env{width:170px;margin:0 auto;cursor:pointer;animation:float 4s ease-in-out infinite}
+.letter{max-height:0;overflow:hidden;opacity:0;transition:max-height 2s ease,opacity 1.4s;background:linear-gradient(180deg,#f6ecd0,#ead9ae);color:#3c3a1c;border-radius:6px;text-align:left;line-height:1.55;box-shadow:0 10px 30px rgba(0,0,0,.4);padding:0 24px;font-size:1.25rem}
+.letter.open{max-height:1100px;opacity:1;padding:24px;margin-top:20px}
+.letter .script{color:#6b5a1c;text-shadow:none;font-size:2.2rem}
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:10px}
+.pol{background:linear-gradient(160deg,#f7efd8,#e8d6a8);padding:10px 10px 22px;border-radius:4px;box-shadow:0 8px 20px rgba(0,0,0,.45);transform:rotate(var(--a,-3deg));transition:transform .4s;cursor:zoom-in;position:relative}
+.pol:nth-child(even){--a:3deg}.pol:hover{transform:rotate(0) scale(1.06);z-index:2}
+.pol img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border:1px solid #c9b27a}
+.pol button{position:absolute;top:-8px;right:-8px}
+input,.sel{width:100%;max-width:340px;padding:13px 16px;margin:7px auto;border-radius:30px;border:1px solid var(--gold2);background:rgba(30,45,20,.6);color:var(--cream);font:inherit;text-align:center;display:block}
+input::placeholder{color:rgba(244,234,208,.6)}
+table{width:100%;border-collapse:collapse;font-size:1rem}th,td{padding:8px;border-bottom:1px solid rgba(233,214,160,.3)}
+.wrap{overflow-x:auto}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:40;display:none;align-items:center;justify-content:center}#lb img{max-width:92%;max-height:90%;border:8px solid #f1e4bd}
+.hide{display:none!important}.msg{min-height:1.4em;color:#b8f0b0}
+.panel{background:var(--pill);border:1px solid var(--gold2);border-radius:14px;padding:20px;margin:16px 0}
+</style>
+</head>
+<body>
+<div id="bg"></div><div id="fx"></div>
+
+<div id="gate"><div class="script" style="font-size:2.4rem">Eydi Alejandra</div><div class="pill">Mis XV Años</div>
+<div class="seal" id="open" role="button" aria-label="Abrir invitación">🐸</div><div class="pill">Toca para abrir</div></div>
+
+<main id="guest">
+<section class="hero">
+  <div id="frameWrap"></div>
+  <div class="pill reveal" style="margin-top:20px">Tengo el honor de invitarte a celebrar mis</div>
+  <div class="script quince reveal">Quinceañera</div>
+  <div class="script name reveal">Eydi Alejandra</div>
+  <div class="pill reveal">Cruz Carbajal</div>
+</section>
+
+<section>
+  <div class="reveal">
+    <div class="pill">Noviembre</div>
+    <div class="date"><div class="l">SÁBADO</div><big>28</big><div class="l">2026</div></div>
+    <div class="count" id="count"></div>
+  </div>
+</section>
+
+<section>
+  <div class="reveal">
+    <div style="font-size:3rem">👑</div>
+    <h2 class="script">Programa</h2>
+    <div class="tl">
+      <div class="ev"><div class="ic">⛪</div><span class="pill" style="margin:0">12:00 del día</span><b>Santa Misa</b>Santa María de Candelaria,<br>El Pacayal<br><a href="https://www.google.com/maps/search/?api=1&query=Santa+Mar%C3%ADa+de+Candelaria+El+Pacayal" target="_blank" rel="noopener">Ver ubicación</a></div>
+      <div class="ev"><div class="ic">👗</div><span class="pill" style="margin:0">2:00 pm</span><b>Fiesta</b>Quinta Victoria<br>(Salón y Jardín)<br><a href="https://maps.app.goo.gl/GjxNF2pa8J42pq2S9?g_st=iw" target="_blank" rel="noopener">Ver ubicación</a></div>
+    </div>
+    <p style="margin-top:6px"><a class="cta" href="https://maps.app.goo.gl/GjxNF2pa8J42pq2S9?g_st=iw" target="_blank" rel="noopener">Ubicación de la fiesta</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="reveal">
+    <div class="orn">❦ ✦ ❦</div>
+    <h2 class="script">Con amor</h2>
+    <div class="fam">
+      <div><b>Mis padres</b>Alejandro Cruz Roblero<br>Melany Carbajal Cruz</div>
+      <div><b>Mi padrino</b>Pedro Alejandro Ballinas Roblero</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="reveal">
+    <h2 class="script">Una carta para ti</h2>
+    <div class="env" id="env"><svg viewBox="0 0 200 140"><defs><linearGradient id="eg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8fa857"/><stop offset="1" stop-color="#4f6b30"/></linearGradient></defs><rect x="5" y="20" width="190" height="115" rx="6" fill="url(#eg)" stroke="#d9bf7a" stroke-width="2"/><path d="M5 22 L100 85 L195 22" fill="none" stroke="#d9bf7a" stroke-width="2"/><circle cx="100" cy="82" r="17" fill="#2f5c3a" stroke="#d9bf7a" stroke-width="2.5"/><text x="100" y="89" font-size="18" text-anchor="middle">🪷</text></svg></div>
+    <p class="pill">Toca el sobre</p>
+    <div class="letter" id="letter">
+      <div class="script">Querido invitado:</div>
+      <p>Cada sueño necesita personas que lo hagan brillar, y tú eres parte de la magia de este momento tan especial en mi vida. Gracias por acompañarme, por tu cariño, tus consejos y tus buenos deseos.</p>
+      <p>Que este día, entre luciérnagas, flores y risas, recordemos que los sueños se cumplen cuando trabajamos por ellos y los compartimos con quienes amamos.</p>
+      <p>Gracias por estar aquí. Tu presencia es mi mejor regalo.</p>
+      <div class="script" style="text-align:right">Con amor, Eydi 🐸</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="reveal">
+    <h2 class="script">Recuerdos</h2>
+    <div class="gal" id="gal"></div>
+    <p class="pill" id="galEmpty">Pronto compartiremos fotos mágicas</p>
+  </div>
+</section>
+
+<section id="rsvp">
+  <div class="reveal">
+    <svg width="150" viewBox="0 0 200 140" style="display:block;margin:0 auto"><rect x="5" y="20" width="190" height="115" rx="6" fill="url(#eg)" stroke="#d9bf7a" stroke-width="2"/><path d="M5 22 L100 85 L195 22" fill="none" stroke="#d9bf7a" stroke-width="2"/><circle cx="100" cy="82" r="17" fill="#2f5c3a" stroke="#d9bf7a" stroke-width="2.5"/></svg>
+    <div class="pill" style="margin-top:14px">Por favor</div>
+    <div class="script" style="font-size:4.6rem">Confirma</div>
+    <input id="fam" placeholder="Nombre de la familia" maxlength="60" autocomplete="off">
+    <input id="num" type="number" min="1" max="20" placeholder="¿Cuántas personas asistirán?">
+    <p><button class="cta" id="send">Confirmar asistencia</button></p>
+    <p class="msg" id="rmsg"></p>
+  </div>
+</section>
+
+<section><div class="reveal"><div id="frameWrap2"></div><div class="script" style="font-size:3.4rem;margin-top:10px">¡Nos vemos pronto!</div></div></section>
+</main>
+
+<div id="lb"><img alt=""></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let photos=[],mainUrl='';
+
+/* Flor de loto SVG */
+function lotus(x,y,s,rot=0){const p=(a,w,h,f)=>`<path transform="rotate(${a})" d="M0 0 C${-w} ${-h*.4} ${-w} ${-h*.9} 0 ${-h} C${w} ${-h*.9} ${w} ${-h*.4} 0 0Z" fill="${f}" stroke="#c9a85a" stroke-width=".8"/>`;
+return `<g transform="translate(${x} ${y}) scale(${s}) rotate(${rot})">${p(-62,9,34,'#f6efd8')}${p(62,9,34,'#f6efd8')}${p(-32,10,40,'#fbf6e6')}${p(32,10,40,'#fbf6e6')}${p(0,10,44,'#fffaf0')}<circle cy="-6" r="3.2" fill="#e9c75a"/></g>`}
+function frame(id){return `<svg viewBox="0 0 320 430" width="100%"><defs>
+<linearGradient id="g${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbeaa8"/><stop offset=".5" stop-color="#b8943c"/><stop offset="1" stop-color="#f1d98a"/></linearGradient>
+<linearGradient id="v${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9c588"/><stop offset="1" stop-color="#6b8f4e"/></linearGradient>
+<radialGradient id="p${id}" cx=".5" cy=".4" r=".7"><stop offset="0" stop-color="#e6d5bd"/><stop offset="1" stop-color="#a8957c"/></radialGradient>
+<clipPath id="c${id}"><ellipse cx="160" cy="205" rx="106" ry="148"/></clipPath></defs>
+<ellipse cx="160" cy="205" rx="140" ry="188" fill="url(#g${id})"/>
+<ellipse cx="160" cy="205" rx="132" ry="180" fill="url(#v${id})"/>
+<ellipse cx="160" cy="205" rx="124" ry="172" fill="none" stroke="url(#g${id})" stroke-width="3" stroke-dasharray="2 6" stroke-linecap="round"/>
+<ellipse cx="160" cy="205" rx="112" ry="154" fill="url(#g${id})"/>
+<ellipse cx="160" cy="205" rx="106" ry="148" fill="url(#p${id})"/>
+<g clip-path="url(#c${id})">${mainUrl?`<image href="${esc(mainUrl)}" x="40" y="45" width="240" height="320" preserveAspectRatio="xMidYMid slice"/>`:`<text x="160" y="235" font-size="90" text-anchor="middle" opacity=".55">👑</text><text x="160" y="290" font-family="Great Vibes,cursive" font-size="34" text-anchor="middle" fill="#6b5a3a" opacity=".8">Eydi</text>`}</g>
+<ellipse cx="160" cy="205" rx="106" ry="148" fill="none" stroke="url(#g${id})" stroke-width="3"/>
+${[[160,20],[26,205],[294,205],[160,392]].map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="9" ry="11" fill="#3a8f4c" stroke="#f1d98a" stroke-width="3"/><ellipse cx="${x-2}" cy="${y-3}" rx="2.5" ry="3" fill="#cdf3c8"/>`).join('')}
+${[[52,100,-40],[268,100,40],[52,310,-140],[268,310,140]].map(([x,y,r])=>lotus(x,y,.9,r)).join('')}
+<path d="M110 22 Q160 -22 210 22 Q160 4 110 22Z" fill="#a9c588" stroke="#f1d98a" stroke-width="2"/>
+${lotus(160,36,1.25)}${lotus(160,404,1.5)}
+<ellipse cx="160" cy="410" rx="46" ry="9" fill="#4f8a3f" stroke="#c9a85a" stroke-width="1.5"/></svg><div class="frogbox">🐸</div>`}
+function paintFrames(){$('frameWrap').innerHTML=frame('a');$('frameWrap2').innerHTML=frame('b');$('frameWrap2').style.cssText='width:min(70%,260px);margin:0 auto;position:relative'}
+paintFrames();
+
+/* Fondo: nenúfares y flores sobre el agua */
+(function(){let h='';const pads=[[6,70,34],[24,86,26],[44,62,38],[66,82,30],[86,66,36],[96,90,22]];
+pads.forEach(([x,y,r],i)=>{h+=`<g class="bob" style="animation-delay:-${i}s"><ellipse cx="${x*10}" cy="${y*2}" rx="${r*1.9}" ry="${r*.38}" fill="#4a7a32" opacity=".85"/><ellipse cx="${x*10}" cy="${y*2-2}" rx="${r*1.6}" ry="${r*.3}" fill="#6c9a4a" opacity=".6"/></g>`});
+h+=lotus(300,120,.75).replace('<g ','<g class="bob" ')+lotus(730,110,.9).replace('<g ','<g class="bob" ');
+const s=document.createElementNS('http://www.w3.org/2000/svg','svg');s.setAttribute('viewBox','0 0 1000 200');s.setAttribute('preserveAspectRatio','xMidYMax slice');s.innerHTML=h;$('bg').appendChild(s)})();
+
+/* Pétalos y luciérnagas */
+(function(){const fx=$('fx'),cols=['#b9e39a','#f4c9dc','#f1e2a0','#8fc46f','#fffaf0'];
+for(let i=0;i<30;i++){const p=document.createElement('i');p.className='pet';const s=8+Math.random()*12;
+p.style.cssText=`left:${Math.random()*100}%;width:${s}px;height:${s*1.3}px;background:${cols[i%5]};animation-duration:${8+Math.random()*9}s;animation-delay:-${Math.random()*15}s;--dx:${(Math.random()-.5)*240}px;--r:${360+Math.random()*540}deg`;fx.appendChild(p)}
+for(let i=0;i<22;i++){const f=document.createElement('i');f.className='ff';f.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:-${Math.random()*9}s`;fx.appendChild(f)}})();
+
+/* Puerta de entrada */
+$('open').onclick=()=>{$('gate').classList.add('off');setTimeout(()=>document.querySelectorAll('.hero .reveal').forEach(e=>e.classList.add('in')),500)};
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('in')),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Cuenta regresiva */
+function tick(){const d=new Date('2026-11-28T12:00:00-06:00')-new Date();
+if(d<=0){$('count').innerHTML='<div><span>🎉</span>¡Es hoy!</div>';return}
+const p=n=>String(Math.floor(n)).padStart(2,'0');
+$('count').innerHTML=[['Días',d/864e5],['Horas',d/36e5%24],['Min',d/6e4%60],['Seg',d/1e3%60]].map(([l,n])=>`<div><span>${p(n)}</span>${l}</div>`).join('')}
+tick();setInterval(tick,1000);
+
+$('env').onclick=()=>$('letter').classList.add('open');
+document.addEventListener('click',e=>{const i=e.target.closest('.gal img');if(i&&i.closest('#gal')){$('lb').firstElementChild.src=i.src;$('lb').style.display='flex'}else if(e.target.closest('#lb'))$('lb').style.display='none'});
+
+/* Galería y datos (Netlify Functions) */
+function drawGal(){$('gal').innerHTML=photos.map(p=>`<div class="pol"><img loading="lazy" src="${esc(p.url)}" alt="Foto"></div>`).join('');$('galEmpty').classList.toggle('hide',photos.length>0)}
+async function load(){try{const r=await fetch('/api/fotos');const d=await r.json();photos=d.fotos||[];mainUrl=d.principal?'/api/foto?k=principal&v='+Date.now():'';drawGal();paintFrames()}catch(e){}}
+load();
+
+/* Confirmación */
+$('send').onclick=async()=>{const familia=$('fam').value.trim(),personas=parseInt($('num').value,10);
+if(!familia||!(personas>0)){$('rmsg').textContent='Escribe el nombre de la familia y el número de personas.';return}
+$('send').disabled=true;
+try{const r=await fetch('/api/rsvps',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({familia,personas})});
+if(!r.ok)throw 0;$('rmsg').textContent='¡Gracias, familia '+familia+'! Los esperamos con mucha ilusión.';$('fam').value=$('num').value=''}
+catch(e){$('send').disabled=false;$('rmsg').textContent='No se pudo guardar tu confirmación. Inténtalo de nuevo o avísanos por mensaje.'}};
+</script>
+</body>
+</html>
