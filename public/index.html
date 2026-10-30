@@ -161,6 +161,8 @@ table{width:100%;border-collapse:collapse;font-size:1rem}th,td{padding:8px;borde
 </main>
 
 <div id="lb"><img alt=""></div>
+<audio id="musica" src="Cancion.mp3" loop preload="auto"></audio>
+<button id="mus" class="cta" aria-label="Silenciar música" style="position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:35;padding:10px 14px;text-decoration:none;display:none">🔊</button>
 
 <script>
 const $=id=>document.getElementById(id);
@@ -203,7 +205,14 @@ p.style.cssText=`left:${Math.random()*100}%;width:${s}px;height:${s*1.3}px;backg
 for(let i=0;i<22;i++){const f=document.createElement('i');f.className='ff';f.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:-${Math.random()*9}s`;fx.appendChild(f)}})();
 
 /* Puerta de entrada */
-$('open').onclick=()=>{$('gate').classList.add('off');setTimeout(()=>document.querySelectorAll('.hero .reveal').forEach(e=>e.classList.add('in')),500)};
+$('open').onclick=()=>{
+  $('gate').classList.add('off');
+  setTimeout(()=>document.querySelectorAll('.hero .reveal').forEach(e=>e.classList.add('in')),500);
+  const a=$('musica'),b=$('mus');
+  a.volume=.6;
+  a.play().then(()=>{b.style.display='block'}).catch(()=>{});
+  b.onclick=()=>{if(a.paused){a.play();b.textContent='🔊'}else{a.pause();b.textContent='🔇'}};
+};
 const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('in')),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
