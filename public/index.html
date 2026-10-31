@@ -74,13 +74,80 @@ table{width:100%;border-collapse:collapse;font-size:1rem}th,td{padding:8px;borde
 #lb{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:40;display:none;align-items:center;justify-content:center}#lb img{max-width:92%;max-height:90%;border:8px solid #f1e4bd}
 .hide{display:none!important}.msg{min-height:1.4em;color:#b8f0b0}
 .panel{background:var(--pill);border:1px solid var(--gold2);border-radius:14px;padding:20px;margin:16px 0}
+
+#gate{gap:10px}
+.castle{width:min(70vw,280px);cursor:pointer;animation:float 5s ease-in-out infinite;filter:drop-shadow(0 12px 22px rgba(0,0,0,.5));transition:transform 1.6s ease-in}
+.castle svg{display:block;width:100%;overflow:visible}
+@media (max-height:720px){.castle{width:200px}}
+.dl,.dr,.glow{transition:transform 1.3s cubic-bezier(.6,0,.3,1)}
+.dl{transform-origin:100px 280px}.dr{transform-origin:200px 280px}.glow{transform-origin:150px 300px}
+#gate.opening .dl,#gate.opening .dr{transform:scaleX(.04)}
+#gate.opening .glow{transform:scale(1.25)}
+#gate.opening .castle{animation:none;transform:scale(1.6)}
+.win{animation:flick 3s ease-in-out infinite}
+@keyframes flick{50%{opacity:.6}}
+.sway{animation:sway 7s ease-in-out infinite;transform-origin:150px 376px}
+@keyframes sway{50%{transform:rotate(.8deg)}}
 </style>
 </head>
 <body>
 <div id="bg"></div><div id="fx"></div>
 
-<div id="gate"><div class="script" style="font-size:2.4rem">Eydi Alejandra</div><div class="pill">Mis XV Años</div>
-<div class="seal" id="open" role="button" aria-label="Abrir invitación">✨</div><div class="pill">Toca para abrir</div></div>
+<div id="gate">
+  <div class="script" style="font-size:2.4rem">Eydi Alejandra</div>
+  <div class="pill">Mis XV Años</div>
+  <div class="castle" id="open" role="button" aria-label="Abrir invitación">
+  <svg viewBox="0 0 300 392" aria-hidden="true">
+    <defs>
+      <linearGradient id="cGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbeaa8"/><stop offset=".5" stop-color="#b8943c"/><stop offset="1" stop-color="#f1d98a"/></linearGradient>
+      <linearGradient id="cStone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfe7bb"/><stop offset="1" stop-color="#8fa46a"/></linearGradient>
+      <linearGradient id="cRoof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fc27a"/><stop offset="1" stop-color="#2f7a43"/></linearGradient>
+      <linearGradient id="cDoor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a8a55"/><stop offset="1" stop-color="#1f4a2a"/></linearGradient>
+      <radialGradient id="cGlow" cx=".5" cy=".6" r=".65"><stop offset="0" stop-color="#fffbd0"/><stop offset="1" stop-color="#e9b84a"/></radialGradient>
+      <pattern id="cBr" width="24" height="16" patternUnits="userSpaceOnUse"><path d="M0 0H24M0 8H24M12 0V8M0 8V16M24 8V16" stroke="rgba(55,80,40,.35)" fill="none"/></pattern>
+    </defs>
+    <!-- Muro central -->
+    <path d="M60 165 V150 H80 V165 H100 V150 H120 V165 H140 V150 H160 V165 H180 V150 H200 V165 H220 V150 H240 V165 Z" fill="url(#cStone)"/>
+    <rect x="60" y="165" width="180" height="212" fill="url(#cStone)"/><rect x="60" y="165" width="180" height="212" fill="url(#cBr)"/>
+    <!-- Torres -->
+    <rect x="8" y="128" width="62" height="249" fill="url(#cStone)"/><rect x="8" y="128" width="62" height="249" fill="url(#cBr)"/>
+    <rect x="230" y="128" width="62" height="249" fill="url(#cStone)"/><rect x="230" y="128" width="62" height="249" fill="url(#cBr)"/>
+    <rect x="2" y="122" width="74" height="9" rx="2" fill="url(#cGold)"/><rect x="224" y="122" width="74" height="9" rx="2" fill="url(#cGold)"/>
+    <polygon points="4,124 39,30 74,124" fill="url(#cRoof)" stroke="url(#cGold)" stroke-width="3"/>
+    <polygon points="226,124 261,30 296,124" fill="url(#cRoof)" stroke="url(#cGold)" stroke-width="3"/>
+    <circle cx="39" cy="26" r="5" fill="url(#cGold)"/><circle cx="261" cy="26" r="5" fill="url(#cGold)"/>
+    <path d="M39 22 V4 L58 11 L39 17" fill="#f1d98a"/><path d="M261 22 V4 L280 11 L261 17" fill="#f1d98a"/>
+    <!-- Ventanas -->
+    <path class="win" d="M30 200 v-26 a9 9 0 0 1 18 0 v26z" fill="#ffe9a0" stroke="url(#cGold)" stroke-width="2"/>
+    <path class="win" d="M252 200 v-26 a9 9 0 0 1 18 0 v26z" fill="#ffe9a0" stroke="url(#cGold)" stroke-width="2"/>
+    <path class="win" d="M30 280 v-26 a9 9 0 0 1 18 0 v26z" fill="#ffe9a0" stroke="url(#cGold)" stroke-width="2"/>
+    <path class="win" d="M252 280 v-26 a9 9 0 0 1 18 0 v26z" fill="#ffe9a0" stroke="url(#cGold)" stroke-width="2"/>
+    <!-- Luz detrás de la puerta -->
+    <path class="glow" d="M100 377 V240 A50 50 0 0 1 200 240 V377Z" fill="url(#cGlow)"/>
+    <!-- Hojas de la puerta -->
+    <g class="dl"><path d="M100 377 V240 A50 50 0 0 1 150 190 V377Z" fill="url(#cDoor)" stroke="#e9d6a0" stroke-width="1.5"/>
+      <path d="M110 250 Q124 232 142 234 M110 300 H142 M110 340 H142" stroke="url(#cGold)" stroke-width="1.6" fill="none"/>
+      <circle cx="142" cy="300" r="3.2" fill="url(#cGold)"/></g>
+    <g class="dr"><path d="M200 377 V240 A50 50 0 0 0 150 190 V377Z" fill="url(#cDoor)" stroke="#e9d6a0" stroke-width="1.5"/>
+      <path d="M190 250 Q176 232 158 234 M190 300 H158 M190 340 H158" stroke="url(#cGold)" stroke-width="1.6" fill="none"/>
+      <circle cx="158" cy="300" r="3.2" fill="url(#cGold)"/></g>
+    <path d="M94 377 V240 A56 56 0 0 1 206 240 V377" fill="none" stroke="url(#cGold)" stroke-width="7"/>
+    <ellipse cx="150" cy="182" rx="8" ry="10" fill="#3a8f4c" stroke="url(#cGold)" stroke-width="3"/>
+    <!-- Pasto y flores -->
+    <path d="M-10 377 Q150 362 310 377 V392 H-10Z" fill="#355a22"/>
+    <text x="30" y="388" font-size="20">🪷</text><text x="248" y="388" font-size="20">🪷</text>
+    <!-- Enredaderas (las hojas las pone el código) -->
+    <g class="sway" id="vines" fill="none" stroke="#3f8a3f" stroke-width="3.5" stroke-linecap="round">
+      <path class="vn" d="M96 376 C84 334 104 304 92 266 C84 240 104 214 126 198 C140 188 150 186 150 174"/>
+      <path class="vn" d="M204 376 C216 334 196 304 208 266 C216 240 196 214 174 198 C160 188 150 186 150 174"/>
+      <path class="vn" d="M14 376 C30 334 8 294 28 254 C44 219 20 194 40 154"/>
+      <path class="vn" d="M286 376 C270 334 292 294 272 254 C256 219 280 194 260 154"/>
+      <path class="vn" d="M0 378 C60 364 110 382 150 376 C200 370 250 382 300 374"/>
+    </g>
+  </svg>
+  </div>
+  <div class="pill">Toca para abrir</div>
+</div>
 
 <main id="guest">
 <section class="hero">
@@ -206,12 +273,12 @@ for(let i=0;i<22;i++){const f=document.createElement('i');f.className='ff';f.sty
 
 /* Puerta de entrada */
 $('open').onclick=()=>{
-  $('gate').classList.add('off');
-  setTimeout(()=>document.querySelectorAll('.hero .reveal').forEach(e=>e.classList.add('in')),500);
+  const g=$('gate');if(g.classList.contains('opening'))return;
+  g.classList.add('opening');
+  setTimeout(()=>{g.classList.add('off');setTimeout(()=>document.querySelectorAll('.hero .reveal').forEach(e=>e.classList.add('in')),400)},1500);
   const a=$('musica'),b=$('mus');
-  a.volume=.6;
-  a.play().then(()=>{b.style.display='block'}).catch(()=>{});
-  b.onclick=()=>{if(a.paused){a.play();b.textContent='🔊'}else{a.pause();b.textContent='🔇'}};
+  if(a){a.volume=.6;a.play().then(()=>{b.style.display='block'}).catch(()=>{});
+  b.onclick=()=>{if(a.paused){a.play();b.textContent='🔊'}else{a.pause();b.textContent='🔇'}}}
 };
 const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('in')),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
@@ -238,6 +305,17 @@ $('send').disabled=true;
 try{const r=await fetch('/api/rsvps',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({familia,personas})});
 if(!r.ok)throw 0;$('rmsg').textContent='¡Gracias, familia '+familia+'! Los esperamos con mucha ilusión.';$('fam').value=$('num').value=''}
 catch(e){$('send').disabled=false;$('rmsg').textContent='No se pudo guardar tu confirmación. Inténtalo de nuevo o avísanos por mensaje.'}};
+
+/* Hojas de las enredaderas y luciérnagas de la entrada */
+(function(){const NS='http://www.w3.org/2000/svg',g=document.getElementById('vines'),cols=['#4f9e4a','#6fbf5a','#3a8f4c','#8fd16f'];
+g.querySelectorAll('.vn').forEach(p=>{const L=p.getTotalLength();let side=1;
+for(let d=8,i=0;d<L;d+=13,i++){const a=p.getPointAtLength(d),b=p.getPointAtLength(Math.min(L,d+1));
+const ang=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI;side=-side;
+const e=document.createElementNS(NS,'ellipse');e.setAttribute('rx',6);e.setAttribute('ry',2.8);e.setAttribute('stroke','none');e.setAttribute('fill',cols[i%4]);
+e.setAttribute('transform',`translate(${a.x} ${a.y}) rotate(${ang+side*55}) translate(6 0)`);g.appendChild(e);
+if(i%5===3){const f=document.createElementNS(NS,'circle');f.setAttribute('cx',a.x+side*5);f.setAttribute('cy',a.y-3);f.setAttribute('r',3);f.setAttribute('fill','#fffaf0');f.setAttribute('stroke','#e9c75a');g.appendChild(f)}}});
+const gt=document.getElementById('gate');
+for(let i=0;i<28;i++){const f=document.createElement('i');f.className='ff';f.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:-${Math.random()*9}s`;gt.appendChild(f)}})();
 </script>
 </body>
 </html>
