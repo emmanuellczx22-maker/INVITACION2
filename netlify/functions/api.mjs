@@ -14,8 +14,8 @@ export default async (req) => {
   if (path === "/fotos" && req.method === "GET") {
     const { blobs } = await fotos.list();
     const keys = blobs.map((b) => b.key);
-    const gal = keys.filter((k) => k !== "principal").sort();
-    return J({ fotos: gal.map((k) => ({ id: k, url: "/api/foto?k=" + k })), principal: keys.includes("principal") });
+    const gal = keys.filter((k) => k !== "principal" && k !== "final").sort();
+    return J({ fotos: gal.map((k) => ({ id: k, url: "/api/foto?k=" + k })), principal: keys.includes("principal"), final: keys.includes("final") });
   }
 
   if (path === "/foto") {
@@ -28,7 +28,9 @@ export default async (req) => {
     if (req.method === "POST") {
       const buf = await req.arrayBuffer();
       if (buf.byteLength > 5.5e6) return J({ error: "muy grande" }, 413);
-      const key = url.searchParams.get("tipo") === "principal" ? "principal" : "g" + Date.now();
+
+      const tipo = url.searchParams.get("tipo");
+      const key = tipo === "principal" ? "principal" : tipo === "final" ? "final" : "g" + Date.now();
       await fotos.set(key, buf);
       return J({ ok: true, key });
     }
