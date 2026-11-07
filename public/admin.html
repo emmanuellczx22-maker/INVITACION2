@@ -83,6 +83,7 @@ table{width:100%;border-collapse:collapse;font-size:1rem}th,td{padding:8px;borde
 <p class="msg" id="amsg"></p>
 <div id="adminBody" class="hide" style="text-align:left">
 <div class="panel"><b>Foto principal (dentro del marco)</b><br><input type="file" id="mainf" accept="image/*"><p style="text-align:center"><button class="cta" style="padding:10px 26px" id="mainb">Guardar foto principal</button></p></div>
+<div class="panel"><b>Foto final (marco del cierre)</b><br><input type="file" id="finf" accept="image/*"><p style="text-align:center"><button class="cta" style="padding:10px 26px" id="finb">Guardar foto final</button></p></div>
 <div class="panel"><b>Galería</b><br><input type="file" id="files" accept="image/*" multiple><p style="text-align:center"><button class="cta" style="padding:10px 26px" id="upl">Subir fotos</button></p><div class="gal" id="agal"></div></div>
 <div class="panel"><b>Confirmaciones</b><p id="tot"></p><p style="text-align:center"><button class="cta" style="padding:10px 26px" id="exp">Exportar lista (CSV)</button></p>
 <div class="wrap"><table><thead><tr><th>Familia</th><th>Personas</th><th>Fecha</th></tr></thead><tbody id="rows"></tbody></table></div></div>
@@ -107,6 +108,8 @@ $('upl').onclick=async()=>{const fs=[...$('files').files];if(!fs.length)return;$
 try{for(const f of fs)await up(f,'galeria');$('files').value='';$('amsg').textContent='¡Fotos agregadas!';gal()}catch(e){$('amsg').textContent=e.message}};
 $('mainb').onclick=async()=>{const f=$('mainf').files[0];if(!f)return;$('amsg').textContent='Subiendo…';
 try{await up(f,'principal');$('amsg').textContent='¡Foto principal guardada!'}catch(e){$('amsg').textContent=e.message}};
+$('finb').onclick=async()=>{const f=$('finf').files[0];if(!f)return;$('amsg').textContent='Subiendo…';
+try{await up(f,'final');$('amsg').textContent='¡Foto final guardada!'}catch(e){$('amsg').textContent=e.message}};
 document.addEventListener('click',async e=>{const id=e.target.dataset&&e.target.dataset.del;if(id&&confirm('¿Quitar esta foto?')){await fetch('/api/foto?k='+encodeURIComponent(id),{method:'DELETE',headers:H()});gal()}});
 $('exp').onclick=()=>{const q=v=>'"'+String(v).replace(/"/g,'""')+'"';
 const csv='\ufeffFamilia,Personas,Fecha\n'+rsvps.map(r=>[q(r.familia),r.personas,q((r.fecha||'').slice(0,10))].join(',')).join('\n');
